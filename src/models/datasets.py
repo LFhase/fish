@@ -144,8 +144,8 @@ class CivilComments_Batched_Dataset(Dataset):
         self.domain_indices = [blank_indices] + [indices[domains == d] for d in domains.unique()]
         domain_indices_by_group = []
         for d_idx in self.domain_indices:
-            domain_indices_by_group.append(d_idx[train_data.metadata_array[d_idx][:, -1]==0])
-            domain_indices_by_group.append(d_idx[train_data.metadata_array[d_idx][:, -1]==1])
+            domain_indices_by_group.append(d_idx[train_data.metadata_array[d_idx][:, -2]==0])
+            domain_indices_by_group.append(d_idx[train_data.metadata_array[d_idx][:, -2]==1])
         self.domain_indices = domain_indices_by_group
 
         train_data._text_array = [train_data.dataset._text_array[i] for i in train_data.indices]
